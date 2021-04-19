@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         {/*<link rel="icon" href="/favicon.ico" />*/}
       </Head>
       <main>
-        <h1>testing</h1>
+        <h1>MY TESTING NEXT DEPLOYMENT</h1>
         <Component {...pageProps} />
       </main>
     </>
