@@ -1,12 +1,13 @@
+import {
+  SchemaCard,
+  Header
+} from "../../components";
 import {useState} from "react";
-import {useRouter} from "next/router";
 
 
-export default function FundList() {
-  const themes = {dark : '#000000'}
+export default function FundList({ themes }) {
   const tabList = ['All Schemes', 'Equity', 'Mixed Fund', 'Money Market'];
   const [currentTab, setCurrentTab] = useState(tabList[0]);
-  const router = useRouter();
 
   const schemas = [
     {
@@ -43,6 +44,7 @@ export default function FundList() {
 
   return (
     <>
+      <Header title="FUND PORTOFOLIO"/>
       <div className="d-flex flex-column align-items-center pb-4" style={{minHeight: '94vh', backgroundColor: themes.dark}}>
         <div style={{width: '90vw'}}>
           <h1 className="py-3 pl-3" style={{ color: themes.light }}>Our Mutual Fund Schemes</h1>
@@ -69,9 +71,25 @@ export default function FundList() {
             ))}
           </nav>
           <div className="row">
-            <button onClick={() => router.push('/home/testing')} className="btn btn-success">testing</button>
-            <button onClick={() => router.push('/home/testing-jugs')} className="btn btn-success">testing jugs</button>
-            <button onClick={() => router.push('/home/testing-ke-3')} className="btn btn-success">testing aduh</button>
+            {currentTab === tabList[0]
+              ? schemas.map((schema, i) => {
+
+                const themeList = [themes.lightGreen, themes.lightPink, themes.lightBlue];
+                const theme = {
+                  card: themeList[i % 3],
+                  light: themes.light
+                }
+
+                return (
+                  <SchemaCard key={i} schema={schema} theme={theme} />
+                )
+              })
+              : currentTab === tabList[1]
+                ? <h1>equity</h1>
+                : currentTab === tabList[2]
+                  ? <h1>mixed fund</h1>
+                  : <h1>money market</h1>
+            }
           </div>
         </div>
       </div>

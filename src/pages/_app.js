@@ -1,8 +1,19 @@
 import '../styles/globals.css'
-import Head from 'next/head';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
-  console.log(Component)
+  const themes = {
+    dark: '#000000',
+    light: '#e3e3e3',
+    gray: '#A6A6A6',
+    yellow: '#FFC000',
+    lightGreen: '#C2D69A',
+    lightPink: '#D99795',
+    lightBlue: '#93CDDD',
+    darkGreen: '#3A5818'
+  }
+
   return (
     <>
       <Head>
@@ -13,8 +24,10 @@ function MyApp({ Component, pageProps }) {
         {/*<link rel="icon" href="/favicon.ico" />*/}
       </Head>
       <main>
-        <h1>MY TESTING NEXT DEPLOYMENT</h1>
-        <Component {...pageProps} />
+        <nav>
+          <div />
+        </nav>
+        <Component {...pageProps} themes={themes} />
       </main>
     </>
   )
